@@ -1,0 +1,17 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.NUMERIC_STD.all;
+
+
+entity decider is
+	port(click : in std_logic;
+		  dIn : in std_logic_vector(3 downto 0);
+		  clk_enable : in std_logic;
+		  add: out std_logic;
+		  sub: out std_logic;
+		  go0: out std_logic);
+end decider;
+
+architecture behav of decider is 
+	
+	

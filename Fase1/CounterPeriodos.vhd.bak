@@ -1,0 +1,33 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity CounterPeriodos is
+	port (enable: in std_logic;
+			countIn: in std_logic_vector(15 downto 0)
+			countPeriodos: out std_logic_vector(3 downto 0));
+end CounterPeriodos;
+
+
+architecture Behavioral of CounterPeriodos is
+	s_count: unsigned(3 downto 0) := unsigned("0000");
+begin
+	if (enable = '1') and (countIn = std_logic_vector(to_unsigned(0, 16))) then
+		if (s_count = unsigned("0000")) then
+			s_count = unsigned("0001");
+		
+		elsif (s_count = unsigned("0001")) then
+			s_count = unsigned("0011");
+			
+		elsif (s_count = unsigned("0011")) then
+			s_count = unsigned("0111");
+			
+		elsif (s_count = unsigned("0111")) then
+			s_count = unsigned("1111");
+		
+		elsif (s_count = unsigned("1111") then
+			s_count = unsigned("0000");
+		end if;
+		--0000 0001 0011 0111 1111
+	end if;
+end Behavioral;
